@@ -19,3 +19,4 @@ def spin_words(sentence):
         result += checked_word + ' '
     result = result[:-1:]
     return result
+
