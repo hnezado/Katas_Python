@@ -9,8 +9,7 @@
 # Input: 123456789 Output: 987654321
 
 def descending_order(num):
-    num_list = [n for n in str(num)]
-    return int(''.join(i for i in sorted(num_list, reverse=True)))
+    return int(''.join(sorted(str(num), reverse=True)))
 
 
 print(descending_order(42145))
