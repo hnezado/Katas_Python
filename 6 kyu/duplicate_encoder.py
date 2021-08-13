@@ -13,8 +13,9 @@
 # the "XXX" is the expected result, not the input!
 
 def duplicate_encode(word):
-	repeated = [char.lower() for char in list(word) if word.count(char) > 1]
-	return ''.join('(' if c.lower() not in repeated else ')' for c in word)
+	lowered = word.lower()
+	repeated = [char for char in list(word) if lowered.count(char.lower()) > 1]
+	return ''.join('(' if c not in repeated else ')' for c in word)
 
 
 print(duplicate_encode('Success'))
