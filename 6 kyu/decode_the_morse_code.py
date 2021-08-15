@@ -85,12 +85,7 @@ MORSE_CODE = {
 
 
 def decodeMorse(morse_code):
-    splitted_msg = morse_code.split('   ')
-    splitted_msg = [msg.split(' ') for msg in splitted_msg]
-    print('adsf', splitted_msg)
-    return ''.join(MORSE_CODE[char] for char in splitted_msg)
-    # # ToDo: Accept dots, dashes and spaces, return human-readable message
-    # return morse_code.replace('.', MORSE_CODE['.']).replace('-', MORSE_CODE['-']).replace(' ', '')
+    return ' '.join([''.join([MORSE_CODE[char] for char in morse_word.split(' ') if char != '']) for morse_word in morse_code.split('   ') if morse_word != ''])
 
 
-print(decodeMorse('.... . -.--   .--- ..- -.. .'))
+print('Result:'+decodeMorse('  .... . -.--   .--- ..- -.. .'))
