@@ -10,8 +10,18 @@
 # ('n', 's', 'e', or 'w' only). It will never give you an empty array (that's not a walk, that's standing still!).
 
 def is_valid_walk(walk):
-    # determine if walk is valid
-    pass
+    altitude, latitude, minutes = 0, 0, 0
+    for direction in walk:
+        if direction == 'n': altitude += 1
+        elif direction == 's': altitude -= 1
+        elif direction == 'e': latitude += 1
+        elif direction == 'w': latitude -= 1
+        minutes += 1
+    return True if altitude == 0 and latitude == 0 and minutes == 10 else False
 
 
-print(is_valid_walk())
+# print(is_valid_walk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's']))
+# print(is_valid_walk(['w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e']))
+# print(is_valid_walk(['w']))
+# print(is_valid_walk(['n', 'n', 'n', 's', 'n', 's', 'n', 's', 'n', 's']))
+print(is_valid_walk(['s', 'n', 'w', 'n', 'n', 's', 'e', 'w', 'n', 's']))
