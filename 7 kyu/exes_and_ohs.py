@@ -11,8 +11,7 @@
 #
 
 def xo(s):
-    return s.lower()#.count('x') # == s.lower().count('o')
+    return s.lower().count('x') == s.lower().count('o')
 
 
-print(xo("xo0"))
-print(xo("xxxoo"))
+print(xo("ooxXm"))
