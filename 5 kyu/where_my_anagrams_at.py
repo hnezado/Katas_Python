@@ -24,9 +24,9 @@ def anagrams(word, words):
 		dict_word = {}
 		for c in w:
 			if c in dict_word.keys(): dict_word[c] += 1
-			else: dict_word[c] = 0
+			else: dict_word[c] = 1
 		return dict_word
-	return [anag if dict_me(anag) == dict_me(word) for anag in words]
+	return [anag for anag in words if dict_me(anag) == dict_me(word)]
 
 
 print(anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada'])) # ['aabb', 'bbaa']
