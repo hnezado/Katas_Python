@@ -8,7 +8,8 @@
 # Please note that using encode is considered cheating.
 
 def rot13(message):
-    pass
+    return ''.join(chr((65 if c.isupper() else 97) + ((ord(c) - (65 if c.isupper() else 97)) + 13)%26) if c.isalpha() else c for c in message)
 
 
 print(rot13('test'))
+print(rot13('Test'))
