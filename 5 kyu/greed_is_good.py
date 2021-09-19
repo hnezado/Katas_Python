@@ -23,7 +23,20 @@
 # If you mutate the input, you will not be able to pass all the tests.
 
 def score(dice):
-    return
+    points = 0
+    for n in dice:
+        if dice.count(n) > 2:
+            if n == 1: points += 1000
+            if n == 6: points += 600
+            if n == 5: points += 500
+            if n == 4: points += 400
+            if n == 3: points += 300
+            if n == 2: points += 200
+        else:
+            if n == 1: points += 100
+            elif n == 5: points += 50
+    return points
 
 
-print(score(400))
+print(score([5, 1, 3, 4, 1]))
+print(score([1, 1, 1, 3, 1]))
