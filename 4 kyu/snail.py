@@ -42,8 +42,6 @@ def snail(snail_map):
             snail_nums += [snail_map[row_index+lap][lap]]
         lap += 1
 
-        # if direction > 3: direction = 0
-        # if not any(snail_dict.keys()): return snail_nums
     return snail_nums
 
 
