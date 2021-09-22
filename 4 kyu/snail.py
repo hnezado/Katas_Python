@@ -20,31 +20,28 @@
 #
 # NOTE 2: The 0x0 (empty matrix) is represented as en empty array inside an array [[]].
 
-from functools import reduce
-
-
 def snail(snail_map):
-    snail_dict = dict.fromkeys(reduce(lambda x, y: x+y, snail_map), True)
     snail_nums = []
-    # direction = 0
-    lap = 0
-    while lap < 1:
-        snail_nums += snail_map[lap][lap:-1-lap]
-        for row_index in range(len(snail_map)):
-            snail_nums += [snail_map[row_index+lap][-1-lap]]
-
-        print(1.2, snail_map[-1-lap][lap:len(snail_map[lap])+1])
-
-        print(1.2, snail_map[-1-lap][0:3:-1])
-
-        snail_nums += snail_map[-1-lap][-1-lap:lap+1:-1]
-        for row_index in range(0, len(snail_map), -1):
-            snail_nums += [snail_map[row_index+lap][lap]]
-        lap += 1
-
+    while len(snail_map) > 0:
+        snail_nums += snail_map[0]
+        del snail_map[0]
+        if len(snail_map) > 0:
+            for row in snail_map:
+                snail_nums += [row[-1]]
+                del row[-1]
+            if snail_map[-1]:
+                snail_nums += snail_map[-1][::-1]
+                del snail_map[-1]
+            if snail_map:
+                for row in reversed(snail_map):
+                    if row:
+                        snail_nums += [row[0]]
+                        del row[0]
+                    else: del row
     return snail_nums
 
 
 print(snail([[1, 2, 3],
              [4, 5, 6],
-             [7, 8, 9]]))
+             [7, 8, 9],
+             [10, 11, 12]]))
