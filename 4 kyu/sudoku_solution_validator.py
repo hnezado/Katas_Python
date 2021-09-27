@@ -36,10 +36,14 @@
 # ]); // => false
 
 def valid_solution(board):
-	nums = {1: False, 2: False, 3: False, 4: False, 5: False, 6: False, 7: False, 8 : False, 9: False}
-	for n in range(1, 10):
-		if n in board(n): pass
-	for row in board: pass
+	nums = {1: False, 2: False, 3: False, 4: False, 5: False, 6: False, 7: False, 8: False, 9: False}
+	for row in board:
+		for n in range(1, 10):
+			if n not in row: return False
+			for n in range(1, 10):
+				if n not in row[n]
+
+	return True
 
 
 print(valid_solution(
