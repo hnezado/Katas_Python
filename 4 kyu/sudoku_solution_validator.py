@@ -36,17 +36,31 @@
 # ]); // => false
 
 def valid_solution(board):
-	nums = {1: False, 2: False, 3: False, 4: False, 5: False, 6: False, 7: False, 8: False, 9: False}
 	for row in board:
 		for n in range(1, 10):
 			if n not in row: return False
-			for n in range(1, 10):
-				if n not in row[n]
 
+	for i in range(len(board[0])):
+		col = []
+		for j in range(len(board)):
+			col.append(board[j][i])
+		print(col)
+		for n in range(1, 10):
+			if n not in col: return False
+
+	for sq_row in range(3):
+		for sq_col in range(3):
+			sq = []
+			for n_row in range(3):
+				for n_col in range(3):
+					num = board[n_row+(3*sq_row)][n_col+(3*sq_col)]
+					sq.append(num)
+					for _ in range(1, 11):
+						if sq.count(num) != 1: return False
 	return True
 
 
-print(valid_solution(
+print(valid_solution([
 		[5, 3, 4, 6, 7, 8, 9, 1, 2],
 		[6, 7, 2, 1, 9, 5, 3, 4, 8],
 		[1, 9, 8, 3, 4, 2, 5, 6, 7],
@@ -55,4 +69,4 @@ print(valid_solution(
 		[7, 1, 3, 9, 2, 4, 8, 5, 6],
 		[9, 6, 1, 5, 3, 7, 2, 8, 4],
 		[2, 8, 7, 4, 1, 9, 6, 3, 5],
-		[3, 4, 5, 2, 8, 6, 1, 7, 9]))
+		[3, 4, 5, 2, 8, 6, 1, 7, 9]]))
