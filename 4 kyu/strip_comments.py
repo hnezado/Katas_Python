@@ -23,14 +23,13 @@ def solution(string, markers):
 	result = []
 	for line in lines:
 		has_markers = False
-		for marker in markers:
-			if marker in line:
-				result.append(line[:line.find(marker)].strip())
+		for c in line:
+			if c in markers:
+				result.append(line[:line.find(c)].strip())
 				has_markers = True
 				break
 		if not has_markers:
 			result.append(line)
-	print('asdf', string, markers)
 	return '\n'.join(result)
 
 
