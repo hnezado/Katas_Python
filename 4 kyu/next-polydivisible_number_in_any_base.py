@@ -16,12 +16,19 @@ def check_poly(n):
 
 
 def next_num(b, n):
+    letters = [chr(i) for i in range(65, 91)]
+    letters_dict = range(10, b+1)
+    print(letters_dict)
     while True:
         num = n
         for i in range(b):
             if int(str(num)[-1])+1 < b:
-                num += 1
+                if int(str(num)[-1])+1 >= 10:
+                    int(str(num)[-1])+1
+                # else:
+                # num += 1
                 if check_poly(num): return num
+
         return None
 
 
