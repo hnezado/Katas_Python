@@ -39,16 +39,13 @@
 #
 # All input will be valid.
 
-stack = []
-program_on = False
-
-def start():
-end = None
-push = None
-add = None
-sub = None
-mul = None
-div = None
+start = lambda func: func([])
+end = lambda a: a.pop()
+push = lambda a: (lambda n: (lambda func: func(a + [n])))
+add = lambda a: (lambda func: func(a + [a.pop() + a.pop()]))
+sub = lambda a: (lambda func: func(a + [a.pop() - a.pop()]))
+mul = lambda a: (lambda func: func(a + [a.pop() * a.pop()]))
+div = lambda a: (lambda func: func(a + [a.pop() // a.pop()]))
 
 
-print((start))
+print((start)(push)(5)(push)(8)(push)(1)(add)(add)(end))
