@@ -38,4 +38,5 @@ def fire_and_fury(tweet):
 	return 'Fake tweet.'
 
 
+
 fire_and_fury('FURYYYFIREYYFIRE ')
