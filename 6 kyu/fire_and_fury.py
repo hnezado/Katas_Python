@@ -30,13 +30,21 @@
 # ex3. FYRYFIRUFIRUFURE = "Fake tweet."
 
 def fire_and_fury(tweet):
-	valid = 'EFIRUY'
-	for c in tweet:
-		if c not in valid: return 'Fake tweet.'
+	cleaned_tweet = ''
+	for ind, c in enumerate(tweet):
+		if c not in 'EFIRUY': return 'Fake tweet.'
 		else:
-			print(tweet.index('FURY'))
-	return 'Fake tweet.'
+			if tweet[ind:ind+4] in ['FURY', 'FIRE']: cleaned_tweet += tweet[ind:ind+4]+' '
+	cleaned_tweet = cleaned_tweet.strip()
+	if cleaned_tweet:
+		if 'FIRE FIRE FIRE' in cleaned_tweet: cleaned_tweet = cleaned_tweet.replace('FIRE FIRE FIRE', 'You and you and you are fired!')
+		cleaned_tweet = cleaned_tweet.replace('FIRE FIRE', 'You and you are fired!')
+		cleaned_tweet = cleaned_tweet.replace('FIRE', 'You are fired!')
+		cleaned_tweet = cleaned_tweet.replace('FURY FURY FURY', 'I am really really furious.')
+		cleaned_tweet = cleaned_tweet.replace('FURY FURY', 'I am really furious.')
+		cleaned_tweet = cleaned_tweet.replace('FURY', 'I am furious.')
+		return cleaned_tweet
+	else: return 'Fake tweet.'
 
 
-
-fire_and_fury('FURYYYFIREYYFIRE ')
+print(fire_and_fury('FURYYYFIREYYFIRE'))
