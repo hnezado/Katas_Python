@@ -36,15 +36,15 @@ def fire_and_fury(tweet):
 		else:
 			if tweet[ind:ind+4] in ['FURY', 'FIRE']: cleaned_tweet += tweet[ind:ind+4]+' '
 	cleaned_tweet = cleaned_tweet.strip()
-	if cleaned_tweet:
-		if 'FIRE FIRE FIRE' in cleaned_tweet: cleaned_tweet = cleaned_tweet.replace('FIRE FIRE FIRE', 'You and you and you are fired!')
-		cleaned_tweet = cleaned_tweet.replace('FIRE FIRE', 'You and you are fired!')
-		cleaned_tweet = cleaned_tweet.replace('FIRE', 'You are fired!')
-		cleaned_tweet = cleaned_tweet.replace('FURY FURY FURY', 'I am really really furious.')
-		cleaned_tweet = cleaned_tweet.replace('FURY FURY', 'I am really furious.')
-		cleaned_tweet = cleaned_tweet.replace('FURY', 'I am furious.')
-		return cleaned_tweet
-	else: return 'Fake tweet.'
+
+	word_count = list()
+	for w in cleaned_tweet.split():
+		if len(word_count) == 0: word_count.append([w, 1])
+		else:
+			if word_count[-1][0] == w: word_count[-1][1] += 1
+			else: word_count.append([w, 1])
+	result_tweet = ''.join([f'I am {"really "*(w[1]-1)}furious. ' if w[0] == 'FURY' else f'You {"and you "*(w[1]-1)}are fired! ' for w in word_count]).strip()
+	return result_tweet if result_tweet else 'Fake tweet.'
 
 
-print(fire_and_fury('FURYYYFIREYYFIRE'))
+print(fire_and_fury('FURYYYFURYFIREFURYFIREYYFIRE'))
