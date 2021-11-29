@@ -41,20 +41,38 @@
 #
 # For Go: nil slice is expected when there are no step between m and n. Example: step(2,4900,4919) --> nil
 
-def step(g, m, n):
-	primes = list()
-	for i in range(m, n+1):
-		divisors = list()
-		for j in range(2, i):
-			if i % j == 0: divisors.append(i)
-		if not any(divisors): primes.append(i)
-	if len(primes) > 1:
-		for i in range(len(primes)):
-			print(primes)
-			try:
-				if abs(primes[i]-primes[i+1]) == g:
-					return [primes[i], primes[i+1]]
-			except: pass
+# def step(g, m, n):
+# 	primes = list()
+# 	for i in range(m, n+1):
+# 		divisors = list()
+# 		for j in range(2, i):
+# 			if i % j == 0: divisors.append(i)
+# 		if not any(divisors): primes.append(i)
+# 	if len(primes) > 1:
+# 		for i in range(len(primes)):
+# 			try:
+# 				for j in range(i+1, len(primes)+1):
+# 					print(j)
+# 					if abs(primes[i]-primes[j]) == g:
+# 						return [primes[i], primes[j]]
+# 			except: pass
+#
+#
+# print(step(6, 100, 110))
 
 
-print(step(6, 100, 110))
+def prime_number(n, d):
+    if n//2 < d:
+      return True
+    if n%d == 0:
+      return False
+    return prime_number(n, d+1)
+
+def find_primes(n,i, result):
+  if i == n + 1:
+    return result
+  if prime_number(i, 2):
+    result.append(i)
+  return find_primes(n, i+1, result)
+
+print(find_primes(100,2, []))
